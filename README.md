@@ -1,7 +1,7 @@
 # ArtNetDMX
 Very Simple ArtNet to DMX Software
 
-Currently supporting output to every FTDI based USB to DMX interface
+Currently supporting every FTDI based USB to DMX interface for output
 
 Using ArtNet3DotNet by cansik
 
