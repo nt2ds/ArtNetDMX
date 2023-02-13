@@ -1,0 +1,10 @@
+C:\Users\Nick\Desktop\MultiTranslation Software\ArtNetDMX\bin\Debug\ArtNetDMX.exe.config
+C:\Users\Nick\Desktop\MultiTranslation Software\ArtNetDMX\bin\Debug\ArtNetDMX.exe
+C:\Users\Nick\Desktop\MultiTranslation Software\ArtNetDMX\bin\Debug\ArtNetDMX.pdb
+C:\Users\Nick\Desktop\MultiTranslation Software\ArtNetDMX\obj\Debug\ArtNetDMX.csproj.AssemblyReference.cache
+C:\Users\Nick\Desktop\MultiTranslation Software\ArtNetDMX\obj\Debug\ArtNetDMX.csproj.SuggestedBindingRedirects.cache
+C:\Users\Nick\Desktop\MultiTranslation Software\ArtNetDMX\obj\Debug\ArtNetDMX.Properties.Resources.resources
+C:\Users\Nick\Desktop\MultiTranslation Software\ArtNetDMX\obj\Debug\ArtNetDMX.csproj.GenerateResource.cache
+C:\Users\Nick\Desktop\MultiTranslation Software\ArtNetDMX\obj\Debug\ArtNetDMX.csproj.CoreCompileInputs.cache
+C:\Users\Nick\Desktop\MultiTranslation Software\ArtNetDMX\obj\Debug\ArtNetDMX.exe
+C:\Users\Nick\Desktop\MultiTranslation Software\ArtNetDMX\obj\Debug\ArtNetDMX.pdb
