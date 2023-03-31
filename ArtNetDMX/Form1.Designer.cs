@@ -35,6 +35,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // StartProgram
@@ -50,16 +51,17 @@
             // 
             // recvIPcombobox
             // 
+            this.recvIPcombobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.recvIPcombobox.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.recvIPcombobox.FormattingEnabled = true;
-            this.recvIPcombobox.Location = new System.Drawing.Point(214, 10);
+            this.recvIPcombobox.Location = new System.Drawing.Point(207, 10);
             this.recvIPcombobox.Name = "recvIPcombobox";
-            this.recvIPcombobox.Size = new System.Drawing.Size(298, 46);
+            this.recvIPcombobox.Size = new System.Drawing.Size(305, 46);
             this.recvIPcombobox.TabIndex = 1;
-            this.recvIPcombobox.SelectedIndexChanged += new System.EventHandler(this.recvIPcombobox_SelectedIndexChanged);
             // 
             // recvUniCombobox
             // 
+            this.recvUniCombobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.recvUniCombobox.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.recvUniCombobox.FormattingEnabled = true;
             this.recvUniCombobox.Items.AddRange(new object[] {
@@ -79,13 +81,12 @@
             "13",
             "14",
             "15"});
-            this.recvUniCombobox.Location = new System.Drawing.Point(339, 77);
+            this.recvUniCombobox.Location = new System.Drawing.Point(336, 77);
             this.recvUniCombobox.MaxDropDownItems = 16;
             this.recvUniCombobox.MaxLength = 2;
             this.recvUniCombobox.Name = "recvUniCombobox";
-            this.recvUniCombobox.Size = new System.Drawing.Size(173, 46);
+            this.recvUniCombobox.Size = new System.Drawing.Size(176, 46);
             this.recvUniCombobox.TabIndex = 2;
-            this.recvUniCombobox.SelectedIndexChanged += new System.EventHandler(this.recvUniCombobox_SelectedIndexChanged);
             // 
             // label1
             // 
@@ -116,21 +117,35 @@
             this.label3.Size = new System.Drawing.Size(0, 39);
             this.label3.TabIndex = 5;
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(507, 186);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(67, 22);
+            this.label4.TabIndex = 6;
+            this.label4.Text = "nt2ds©";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(586, 217);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.recvUniCombobox);
             this.Controls.Add(this.recvIPcombobox);
             this.Controls.Add(this.StartProgram);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "Form1";
             this.Text = "ArtNet to DMX FTDI";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -144,6 +159,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
     }
 }
 

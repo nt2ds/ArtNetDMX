@@ -1,17 +1,9 @@
 ﻿using System;
 using System.IO;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
 using System.Net.NetworkInformation;
 using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using ArtNetDMX.Properties;
-using System.Security.Cryptography.X509Certificates;
 
 namespace ArtNetDMX
 {
@@ -19,12 +11,14 @@ namespace ArtNetDMX
     {
         public string IP = "";
         public int uni;
+        public int defaultUni = 0;
         public byte[] fileUni;
         public StreamWriter ipF;
         public StreamWriter unF;
         public Form1()
         {
             InitializeComponent();
+            
             ArtNetC.mainWin = this;
             DiscoverNetworks();
             if (!File.Exists("ip"))
@@ -38,17 +32,17 @@ namespace ArtNetDMX
                 {
                     IP = line;
                 }
-                Console.WriteLine(IP);
+
                 
                 File.Delete("ip");
                 ipF = new StreamWriter("ip", true);
                 recvIPcombobox.Text = IP;
-                Console.WriteLine(IP + " Second Time");
 
             }
             if (!File.Exists("uni"))
             {
                unF = new StreamWriter("uni", true);
+               recvUniCombobox.SelectedIndex = defaultUni;
             }
             else
             {
@@ -57,12 +51,9 @@ namespace ArtNetDMX
                 {
                     uni = Int32.Parse(line);
                 }
-                Console.WriteLine(uni);
-                
                 File.Delete("uni");
                 unF = new StreamWriter("uni", true);
-                recvUniCombobox.Text = uni.ToString();
-                Console.WriteLine(uni + " Second Time");
+                recvUniCombobox.SelectedIndex = uni;
             }
             
         }
@@ -71,25 +62,25 @@ namespace ArtNetDMX
         
         private async void StartProgram_Click(object sender, EventArgs e)
         {
-            if(recvIPcombobox.Text != null && recvIPcombobox.SelectedIndex >= 0 && recvIPcombobox.SelectedIndex <= 15)
+            if(recvIPcombobox.Text != null && recvIPcombobox.Text != "")
             {
-                ArtNetC.startArtNet();
-                ipF.Write(recvIPcombobox.Text);
-                unF.Write(recvUniCombobox.Text);
+                ArtNetC.recvUni = Int32.Parse(recvUniCombobox.Text);
+                ArtNetC.recvIpAddress = recvIPcombobox.Text;
+                ipF.Write(ArtNetC.recvIpAddress);
+                unF.Write(ArtNetC.recvUni);
                 ipF.Close();
                 unF.Close();
-                await Task.Delay(2000);
-                EnttecDMX.start();
                 StartProgram.Enabled = false;
                 recvIPcombobox.Enabled = false;
                 recvUniCombobox.Enabled = false;
+                ArtNetC.startArtNet();
+                await Task.Delay(100);
+                EnttecDMX.start();
+                
             }
             else
             {
-                label3.Text = "Set Properties";
-                await Task.Delay(2000);
-                label3.Text = "";
-
+                ShowError();
             }
             
         }
@@ -97,7 +88,6 @@ namespace ArtNetDMX
         public void CallDmxUpdate(int dmxChannel, byte channelValue)
         {
             EnttecDMX.setDmxValue(dmxChannel, channelValue);
-            //Console.WriteLine($"Dmx Channel: {dmxChannel} Channel Value: {channelValue}");
         }
 
         public void DiscoverNetworks()
@@ -114,25 +104,20 @@ namespace ArtNetDMX
                 }
             }
         }
-
-        private void recvUniCombobox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            ArtNetC.recvUni = recvUniCombobox.SelectedIndex;
-            
-            
-            
-        }
-
-        private void recvIPcombobox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            ArtNetC.recvIpAddress = recvIPcombobox.Text;
-        }
-
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
             Application.ExitThread();
-
             Environment.Exit(Environment.ExitCode);
+        }
+
+        private void ShowError()
+        {
+            MessageBox.Show("Enter valid properties", Name = "Properties error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

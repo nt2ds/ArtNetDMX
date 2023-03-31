@@ -10,28 +10,16 @@ using System.Text;
 
 namespace ArtNetDMX
 {
-
-
     public class ArtNetC
     {
-
         public static int dmxChannel = 0;
         public static byte channelVal = 0;
         public static Form1 mainWin;
         public static string recvIpAddress = "";
         public static int recvUni = 0;
         public static bool running = true;
-
-
-
-
-
-
-
         public static void startArtNet()
         {
-            Console.WriteLine("Started ArtNet");
-
             ArtNetController controller = new ArtNetController();
             controller.Address = IPAddress.Parse(recvIpAddress);
             controller.DmxPacketReceived += (s, p) =>
@@ -47,13 +35,6 @@ namespace ArtNetDMX
 
             };
             controller.Start();
-            
-
-
         }
-
-
     }
-
-
 }
