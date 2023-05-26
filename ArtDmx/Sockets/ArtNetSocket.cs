@@ -169,7 +169,7 @@ namespace ArtNet.Sockets
             byte[] subnetMaskBytes = localSubnetMask.GetAddressBytes();
             byte[] broadcastAddress = new byte[ipAdressBytes.Length];
 
-            /*if (ipAdressBytes.Length != subnetMaskBytes.Length)
+            if (ipAdressBytes.Length != subnetMaskBytes.Length)
             {
                 throw new ArgumentException("Lengths of IP address and subnet mask do not match.");
             }
@@ -178,9 +178,7 @@ namespace ArtNet.Sockets
             for (int i = 0; i < broadcastAddress.Length; i++)
             {
                 broadcastAddress[i] = (byte)(ipAdressBytes[i] | (subnetMaskBytes[i] | 255));
-            }*/
-            broadcastAddress = new byte[] { 255, 255, 255, 255 };
-            broadcastAddress[0] = ipAdressBytes[0];
+            }
             return new IPAddress(broadcastAddress);
         }
 

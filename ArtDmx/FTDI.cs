@@ -62,6 +62,7 @@ namespace ArtNetToDMX
             try
             {
                 thread.Start();
+                initOpenDMX();
             }
             catch(ThreadStateException)
             {
@@ -70,6 +71,7 @@ namespace ArtNetToDMX
                 thread = null;
                 GC.Collect();
                 done = false;
+                initOpenDMX();
                 thread = new Thread(new ThreadStart(writeData));
                 thread.Start();
 
@@ -87,9 +89,9 @@ namespace ArtNetToDMX
 
         public static void writeData()
         {
+            
             while (!done)
             {
-                initOpenDMX();
                 FT_SetBreakOn(handle);
                 FT_SetBreakOff(handle);
                 bytesWritten = write(handle, buffer, buffer.Length);

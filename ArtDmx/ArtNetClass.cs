@@ -26,19 +26,13 @@ namespace ArtNetToDMX
             };
             var localIP = IPAddress.Parse(address);
 
-            /*Console.WriteLine(artnet.GetBroadcastAddress());
-            Console.WriteLine(localIP.ToString());*/
-
             artnet.Begin(localIP, IPAddress.Parse("255.255.255.0"));
             artnet.NewPacket += (object sender, ArtNet.Sockets.NewPacketEventArgs<ArtNetPacket> e) =>
             {
                 ArtDmx dmx;
-                //Console.WriteLine(e.Packet.ToString());
                 if (e.Packet.OpCode == OpCodes.OpDmx)
                 {
                     dmx = ArtDmx.FromData(e.Packet.PacketData);
-                    /*Console.WriteLine(dmx.ToString());
-                    Console.WriteLine(dmx.Data[511]);*/
                     mainWin.datastream(dmx);
                 }
                 if (e.Packet.OpCode == OpCodes.OpPoll)

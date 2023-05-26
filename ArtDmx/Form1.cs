@@ -65,7 +65,11 @@ namespace ArtNetToDMX
 
         public static void OneUniverse(ArtDmx dmx)
         {
-            Array.Copy(dmx.Data, 0, FTDI.buffer, 1, 512);
+            //Array.Copy(dmx.Data, 0, FTDI.buffer, 1, 512);
+            for (int i = 0; i < 511; i++)
+            {
+                FTDI.buffer[i+1] = dmx.Data[i];
+            }
             Console.WriteLine("one universe");
         }
 
