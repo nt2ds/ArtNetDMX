@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Nick\\Desktop\\MultiTranslation Software\\ArtNetToDMX\\ArtNetToDMX.csproj": {}
+    "E:\\Downloads\\ArtNetDMX-Latest\\ArtNetDMX-Latest\\ArtDmx\\ArtNetToDMX.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Nick\\Desktop\\MultiTranslation Software\\ArtNetToDMX\\ArtNetToDMX.csproj": {
+    "E:\\Downloads\\ArtNetDMX-Latest\\ArtNetDMX-Latest\\ArtDmx\\ArtNetToDMX.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Nick\\Desktop\\MultiTranslation Software\\ArtNetToDMX\\ArtNetToDMX.csproj",
+        "projectUniqueName": "E:\\Downloads\\ArtNetDMX-Latest\\ArtNetDMX-Latest\\ArtDmx\\ArtNetToDMX.csproj",
         "projectName": "ArtNetToDMX",
-        "projectPath": "C:\\Users\\Nick\\Desktop\\MultiTranslation Software\\ArtNetToDMX\\ArtNetToDMX.csproj",
+        "projectPath": "E:\\Downloads\\ArtNetDMX-Latest\\ArtNetDMX-Latest\\ArtDmx\\ArtNetToDMX.csproj",
         "packagesPath": "C:\\Users\\Nick\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Nick\\Desktop\\MultiTranslation Software\\ArtNetToDMX\\obj\\",
+        "outputPath": "E:\\Downloads\\ArtNetDMX-Latest\\ArtNetDMX-Latest\\ArtDmx\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
           "C:\\Users\\Nick\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -62,7 +58,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files (x86)\\dotnet\\sdk\\6.0.405\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
         }
       }
     }
