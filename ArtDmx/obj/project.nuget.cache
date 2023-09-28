@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "ioRkOdtqWY0OHToLg7ieK6tDTr6Ci+L8LfYs4IaB/4cTZiz9DYBWWN74PxbUriAQNky6UX0xQtD+f1jEhqtLnw==",
+  "dgSpecHash": "vZIq79LhgdHMF5sYh9SaSrnCoWzWaTMMdK6kP1bZ8lhZ62Kc3tCflFbpgtGjyrOVAuGxQiADuhasNY/MiQq5zQ==",
   "success": true,
-  "projectFilePath": "E:\\Downloads\\ArtNetDMX-Latest\\ArtNetDMX-Latest\\ArtDmx\\ArtNetToDMX.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "C:\\Users\\Nick\\Desktop\\MultiTranslation Software\\ArtNetDMX-main\\ArtNetDMX-main\\ArtDmx\\ArtNetToDMX.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Nick\\.nuget\\packages\\microsoft.netcore.app.host.win-x86\\6.0.18\\microsoft.netcore.app.host.win-x86.6.0.18.nupkg.sha512"
+  ],
   "logs": []
 }
