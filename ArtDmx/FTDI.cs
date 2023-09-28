@@ -67,7 +67,7 @@ namespace ArtNetToDMX
             catch(ThreadStateException)
             {
                 
-                thread.Interrupt();
+                
                 thread = null;
                 GC.Collect();
                 done = false;
@@ -126,6 +126,7 @@ namespace ArtNetToDMX
             {
                 done = true;
                 status = FT_Close(handle);
+                thread.Interrupt();
             }
         }
 

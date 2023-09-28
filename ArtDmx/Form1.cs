@@ -14,24 +14,32 @@ namespace ArtNetToDMX
         public string localIP;
         public string uni;
         public bool oneUni;
+        public bool autoStart;
         public ArtNet_to_DMX()
         {
             InitializeComponent();
-            if (File.Exists("info") && File.ReadAllLines("info").Length == 3)
+            if (File.Exists("info") && File.ReadAllLines("info").Length == 4)
             {
                 localIP = File.ReadAllLines("info")[0].Substring(4);
                 uni = File.ReadAllLines("info")[1].Substring(5);
                 oneUni = Convert.ToBoolean(File.ReadAllLines("info")[2].Substring(8));
+                autoStart = Convert.ToBoolean(File.ReadAllLines("info")[3].Substring(11));
+
                 Address_cb.Text = localIP;
                 Universe_cb.Text = uni;
                 oneUniverse_checkbox.Checked = oneUni;
+                autoStart_checkbox.Checked = autoStart;
             }
             else
             {
-                File.WriteAllText("info",null);
+                File.WriteAllText("info", null);
             }
-            
+
             ArtNetClass.mainWin = this;
+            if(autoStart == true)
+            {
+                StartProgram();
+            }
         }
         public void DiscoverNetworks()
         {
@@ -68,7 +76,7 @@ namespace ArtNetToDMX
             //Array.Copy(dmx.Data, 0, FTDI.buffer, 1, 512);
             for (int i = 0; i < 511; i++)
             {
-                FTDI.buffer[i+1] = dmx.Data[i];
+                FTDI.buffer[i + 1] = dmx.Data[i];
             }
             Console.WriteLine("one universe");
         }
@@ -83,9 +91,7 @@ namespace ArtNetToDMX
 
         }
 
-
-
-        public void Start_button_Click(object sender, EventArgs e)
+        public void StartProgram()
         {
             if (oneUniverse_checkbox.Checked == true && !string.IsNullOrEmpty(Address_cb.Text))
             {
@@ -94,6 +100,7 @@ namespace ArtNetToDMX
                 Stop_button.Enabled = true;
                 Start_button.Enabled = false;
                 Address_cb.Enabled = false;
+                Universe_cb.Enabled = false;
                 oneUniverse_checkbox.Enabled = false;
                 started = true;
             }
@@ -114,7 +121,12 @@ namespace ArtNetToDMX
                 MessageBox.Show("Set Parameters", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
                 started = false;
             }
+        }
 
+
+        public void Start_button_Click(object sender, EventArgs e)
+        {
+            StartProgram();
         }
 
         private void oneUniverse_checkbox_CheckedChanged(object sender, EventArgs e)
@@ -122,12 +134,10 @@ namespace ArtNetToDMX
             if (oneUniverse_checkbox.Checked == true)
             {
                 datastream = OneUniverse;
-                Universe_cb.Enabled = false;
             }
             else
             {
                 datastream = MultipleUniverse;
-                Universe_cb.Enabled = true;
 
             }
         }
@@ -140,11 +150,8 @@ namespace ArtNetToDMX
             FTDI.Close();
             started = false;
             Address_cb.Enabled = true;
+            Universe_cb.Enabled = true;
             oneUniverse_checkbox.Enabled = true;
-            if (oneUniverse_checkbox.Checked == false)
-            {
-                Universe_cb.Enabled = true;
-            }
         }
 
         private void CloseApp(object sender, FormClosingEventArgs e)
@@ -161,9 +168,18 @@ namespace ArtNetToDMX
 
         private void Save_button_Click(object sender, EventArgs e)
         {
-            File.WriteAllText("info", $"IP: {Address_cb.Text}\n");
-            File.AppendAllText("info", $"Uni: {Universe_cb.Text}\n");
-            File.AppendAllText("info", $"OneUni: {oneUniverse_checkbox.Checked.ToString().ToLower()}\n");
+            if (!string.IsNullOrEmpty(Address_cb.Text) && !string.IsNullOrEmpty(Universe_cb.Text))
+            {
+                File.WriteAllText("info", $"IP: {Address_cb.Text}\n");
+                File.AppendAllText("info", $"Uni: {Universe_cb.Text}\n");
+                File.AppendAllText("info", $"OneUni: {oneUniverse_checkbox.Checked.ToString().ToLower()}\n");
+                File.AppendAllText("info", $"Autostart: {autoStart_checkbox.Checked.ToString().ToLower()}\n");
+            }
+            else
+            {
+                MessageBox.Show("Set Parameters", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+
+            }
         }
 
         private void Address_cb_KeyPress(object sender, KeyPressEventArgs e)
@@ -173,8 +189,12 @@ namespace ArtNetToDMX
 
         private void oneUniverse_checkbox_MouseHover(object sender, EventArgs e)
         {
-            toolTip1.Show("Checked: Will listen to any universe from any app (skips an if statement => no check on data packet)\nUnchecked: Will listen to a specific universe (uses if statement => check on data packet)", oneUniverse_checkbox);
+            toolTip1.Show("Checked: Will listen to any universe on the network\nUnchecked: Will listen to a specific universe on the network", oneUniverse_checkbox);
+        }
 
+        private void autoStart_checkbox_MouseHover(object sender, EventArgs e)
+        {
+            toolTip1.Show("Autostart the program the next time opening the app.", autoStart_checkbox);
         }
     }
 }

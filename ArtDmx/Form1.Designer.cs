@@ -39,6 +39,7 @@
             label1 = new Label();
             Save_button = new Button();
             toolTip1 = new ToolTip(components);
+            autoStart_checkbox = new CheckBox();
             SuspendLayout();
             // 
             // IP_Label
@@ -75,7 +76,6 @@
             // 
             Universe_cb.DropDownHeight = 210;
             Universe_cb.DropDownStyle = ComboBoxStyle.DropDownList;
-            Universe_cb.Enabled = false;
             Universe_cb.Font = new Font("Segoe UI", 30F, FontStyle.Regular, GraphicsUnit.Point);
             Universe_cb.FormattingEnabled = true;
             Universe_cb.IntegralHeight = false;
@@ -149,11 +149,24 @@
             Save_button.UseVisualStyleBackColor = true;
             Save_button.Click += Save_button_Click;
             // 
+            // autoStart_checkbox
+            // 
+            autoStart_checkbox.AutoSize = true;
+            autoStart_checkbox.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
+            autoStart_checkbox.Location = new Point(12, 320);
+            autoStart_checkbox.Name = "autoStart_checkbox";
+            autoStart_checkbox.Size = new Size(248, 39);
+            autoStart_checkbox.TabIndex = 10;
+            autoStart_checkbox.Text = "Autostart next time";
+            autoStart_checkbox.UseVisualStyleBackColor = true;
+            autoStart_checkbox.MouseHover += autoStart_checkbox_MouseHover;
+            // 
             // ArtNet_to_DMX
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(528, 316);
+            ClientSize = new Size(528, 367);
+            Controls.Add(autoStart_checkbox);
             Controls.Add(Save_button);
             Controls.Add(label1);
             Controls.Add(oneUniverse_checkbox);
@@ -184,5 +197,6 @@
         private Label label1;
         private Button Save_button;
         private ToolTip toolTip1;
+        private CheckBox autoStart_checkbox;
     }
 }
